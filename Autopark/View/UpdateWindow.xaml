@@ -1,0 +1,26 @@
+﻿<Window x:Class="Autopark.View.UpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Autopark.View"
+        xmlns:viewmodel="clr-namespace:Autopark.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:UpdateViewModel}"
+        mc:Ignorable="d"
+        Title="UpdateWindow" Height="400" Width="350"
+        Background="#888DFF32"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        BorderThickness="1"
+        WindowStartupLocation="CenterScreen" Topmost="True"
+        BorderBrush="#FF1FFF00">
+    <Grid>
+        <Grid>
+            <StackPanel VerticalAlignment="Center">
+                <ComboBox ItemsSource="{Binding Tables}" SelectedItem="{Binding SelectedTable}" VerticalAlignment="Top" Width="120" Grid.Row="1" Margin="0,20,0,20"/>
+                <DataGrid ItemsSource="{Binding TableData}" AutoGenerateColumns="True" x:Name="MyDataGrid" Height="250" Width="200" VerticalAlignment="Top"/>
+                <Button Style="{DynamicResource CustomButton}" Content="Обновить" Command="{Binding UpdateCommand}" Width="120" Height="50" Margin="0,20,0,20"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

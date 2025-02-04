@@ -1,0 +1,66 @@
+﻿<Window x:Class="Autopark.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Autopark"
+        xmlns:viewmodel="clr-namespace:Autopark.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Title="Login" Height="550" Width="450" 
+        Background="#158DFF32"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        BorderThickness="1"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded" Topmost="True" 
+        BorderBrush="#FF1FFF00">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FF5AFF00" Opacity="0.3" MouseDown="Grid_MouseDown"/>
+        <TextBlock Text="Авторизация" FontFamily="{DynamicResource Gropled}" FontSize="35" 
+               Foreground="LightGray" HorizontalAlignment="Center" 
+               VerticalAlignment="Center" Grid.Row="0"/>
+        <Border Width="300" Height="300" Grid.Row="1" CornerRadius="10" 
+        Background="#FF5AFF00" Opacity="0.3"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Width="250">
+            <StackPanel Height="200">
+                <TextBlock Text="Логин"
+           Foreground="White"
+           FontSize="20"
+           FontFamily="{DynamicResource Klukva}"                            
+           Margin="0,35,0,0"/>
+                <TextBox x:Name="textUser" Padding="20,0,0,0" Margin="0,5,0,0" Style="{DynamicResource CtextBox}"
+                         Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBox.Background>
+                        <ImageBrush
+                            Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Text="Пароль"
+                        Foreground="White"
+                        FontSize="20"
+                        FontFamily="{DynamicResource Klukva}"
+                        Margin="0,15,0,0"/>
+                <TextBox x:Name="txtPass" Style="{DynamicResource CtextBox}"
+                            Margin="0,5,0,0" Padding="20,0,0,0"
+                            Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <TextBox.Background>
+                        <ImageBrush
+                                Stretch="None"
+                                AlignmentX="Left"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Margin="0,15,0,0" x:Name="ErrorTextBlock" Text="{Binding ErrorMessage}" Foreground="#FFFF180D" FontSize="15"/>
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="LoginButtom" Command="{Binding LoginCommand}" Style="{DynamicResource CustomButton}" Content="Авторизоваться"  Height="45" Width="190" Click="LoginButtom_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
+    

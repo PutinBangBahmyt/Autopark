@@ -1,0 +1,38 @@
+﻿<Window x:Class="Autopark.View.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Autopark.View"
+        xmlns:viewmodel="clr-namespace:Autopark.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Background="#158DFF32"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        BorderThickness="1"
+        WindowStartupLocation="CenterScreen"
+        Title="ReportWindow" Height="400" Width="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
+            <Border Background="#FF5AFF00" Opacity="0.3"/>
+            <TextBlock Text="Создание отчёта" FontSize="35" Foreground="White" FontFamily="{DynamicResource Gropled}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Border Background="#FF5AFF00" Opacity="0.3" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Width="250" Height="200" CornerRadius="10"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Введите логин пользователя" FontSize="20" Foreground="White" FontFamily="{DynamicResource Klukva}"/>
+            <TextBox Style="{DynamicResource CtextBox}" Width="200" Margin="0,5,0,0" Padding="20,0,0,0" Text="{Binding Login1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <TextBox.Background>
+                    <ImageBrush
+                                Stretch="None"
+                                AlignmentX="Left"/>
+                </TextBox.Background>
+            </TextBox>
+            <Button Style="{DynamicResource CustomButton}" Content="Сделать отчёт" Margin="0,50,0,0" Command="{Binding ReportCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

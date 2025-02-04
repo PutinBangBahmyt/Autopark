@@ -1,0 +1,197 @@
+﻿<Window x:Class="Autopark.View.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Autopark.View"
+        xmlns:viewmodel="clr-namespace:Autopark.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Title="AdminWindow"
+        Height="720"
+        Width="1280"
+        ResizeMode="NoResize"
+         Background="#158DFF32"
+        AllowsTransparency="True"
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen"
+        Topmost="True" 
+        BorderBrush="#FF1FFF00">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid MouseDown="Grid_MouseDown" Background="#FF5AFF00" Opacity="0.3"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <TabControl SelectedItem="{Binding SelectedTab}">
+                    <TabItem x:Name="Users" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Users}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding Fam}"/>
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding Otch}"/>
+                                <DataGridTextColumn Header="Дата Рождения" Binding="{Binding Datebirth}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Status" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Status}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Marks" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Marks}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Models" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Models}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Объём бака" Binding="{Binding Volume}"/>
+                                <DataGridTextColumn Header="Количество мест" Binding="{Binding Mesta}"/>
+                                <DataGridTextColumn Header="Год выпуска" Binding="{Binding Year}"/>
+                                <DataGridTextColumn Header="ID марки" Binding="{Binding ID_mark}"/>
+                                <DataGridTextColumn Header="ID топлива" Binding="{Binding ID_fuel}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Cars" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Cars}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Номер" Binding="{Binding Nomer}"/>
+                                <DataGridTextColumn Header="ID модели" Binding="{Binding ID_model}"/>
+                                <DataGridTextColumn Header="ID цвета" Binding="{Binding ID_color}"/>
+                                <DataGridTextColumn Header="Тариф за минуту" Binding="{Binding Tarif}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Fuel" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Fuel}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Header="Тип" Binding="{Binding Name}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Paints" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Paints}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Header="Цвет" Binding="{Binding Name}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Rent" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Rent}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID Аренды" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Header="Номер авто" Binding="{Binding Nomer}"/>
+                                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                                <DataGridTextColumn Header="Дата аренды" Binding="{Binding RentDate}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Vozvrat" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Vozvrat}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Header="Дата возврата" Binding="{Binding VozvratDate}"/>
+                                <DataGridTextColumn Header="ID арендв" Binding="{Binding ID_rent}"/>
+                                <DataGridTextColumn Header="Итоговая стоимость аренды" Binding="{Binding Sum}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem x:Name="Fine" Margin="-2,4,-2,-1">
+                        <DataGrid ItemsSource="{Binding Fine}" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Width="Auto" Height="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID Штрафа" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Header="ID Аренды" Binding="{Binding ID_rent}"/>
+                                <DataGridTextColumn Header="Наименование штрафа" Binding="{Binding Name_fine}"/>
+                                <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost_fine}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Button Content="Создать отчёт" Style="{DynamicResource CustomButton}" Margin="20,0,20,0" Height="50" Width="190" Command="{Binding ReportWCommand}"/>
+                    <Button Content="Добавить запись" Style="{DynamicResource CustomButton}" Margin="20,0,20,0" Height="50" Width="190" Command="{Binding AddWCommand}"/>
+                    <Button Content="Обновить запись" Style="{DynamicResource CustomButton}" Margin="20,0,20,0" Height="50" Width="190" Command="{Binding UpdateWCommand}"/>
+                    <Button Content="Удалить запись" Style="{DynamicResource CustomButton}" Margin="20,0,20,0" Height="50" Width="190" Command="{Binding DeleteWCommand}"/>
+                    <Button Content="Обновить таблицу" Style="{DynamicResource CustomButton}" Margin="20,0,20,0" Height="50" Width="190" Command="{Binding UpdateTable}"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Users}">
+                    <Button.Content>
+                        <Image Source="/Images/profile.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Status}">
+                    <Button.Content>
+                        <Image Source="/Images/social-status.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Marks}">
+                    <Button.Content>
+                        <Image Source="/Images/brand.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Models}">
+                    <Button.Content>
+                        <Image Source="/Images/car.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Cars}">
+                    <Button.Content>
+                        <Image Source="/Images/car.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Fuel}">
+                    <Button.Content>
+                        <Image Source="/Images/gas-pump.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Paints}">
+                    <Button.Content>
+                        <Image Source="/Images/paint-brush.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Rent}">
+                    <Button.Content>
+                        <Image Source="/Images/rental-car.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Vozvrat}">
+                    <Button.Content>
+                        <Image Source="/Images/car-key.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+                <Button FontSize="45" Height="60" Width="60" Style="{DynamicResource IconButton}" Command="{Binding ShowCommand}" CommandParameter="{Binding ElementName=Fine}">
+                    <Button.Content>
+                        <Image Source="/Images/fine.png" Height="40" Width="40"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
